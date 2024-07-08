@@ -56,6 +56,8 @@ import { NavlinkComponent } from './Pages/navlink/navlink.component';
 import { ResetComponent } from './Pages/reset/reset.component';
 import { UpdateDemandeurComponent } from './Pages/update-demandeur/update-demandeur.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HeadersComponent } from './Pages/headers/headers.component';
+import { FootersComponent } from './Pages/footers/footers.component';
 // import { MbscModule } from '@mobiscroll/angular';
 
 
@@ -96,6 +98,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NavlinkComponent,
     ResetComponent,
     UpdateDemandeurComponent,
+    HeadersComponent,
+    FootersComponent,
 
   ],
   imports: [
