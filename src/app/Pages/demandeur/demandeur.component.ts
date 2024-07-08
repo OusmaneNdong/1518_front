@@ -137,14 +137,16 @@ export class DemandeurComponent implements OnInit{
               title: "Bravo Votre Profile est complet.",
               showConfirmButton: true,
               timer: 5000
+            }).then(()=>{
+              this.router.navigate(['/espaceClient']);
             })
             
           }
         })
         localStorage.setItem('nin', this.getNin());
-         this.responseMessage = data;
-         this.snackbarService.openSnackBar(this.responseMessage,"");
-         this.router.navigate(['/espaceClient']);
+        //  this.responseMessage = data;
+        //  this.snackbarService.openSnackBar(this.responseMessage,"");
+        //  this.router.navigate(['/espaceClient']);
       },
       error:(err:any)=>{
         if (err.error.errorMessage==='NOT_FOUND') {

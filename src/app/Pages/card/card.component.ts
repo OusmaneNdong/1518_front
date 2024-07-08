@@ -24,16 +24,9 @@ constructor(private dashbordService: DashbordService){
   ngOnInit(): void {
   }
 
-  test(slug: string | undefined){
+  emitInfo(slug: string | undefined){
 
     this.stringChange.emit(slug);
-    
-    // console.log("delet"+slug);
-    // this.dashbordService.getByStatut(slug?slug:"all").subscribe((response:any)=>{
-    //   this.tDemande = response;
-    //   console.log(response);
-      
-    // })
     
   }
 }

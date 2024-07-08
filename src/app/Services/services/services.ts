@@ -1,9 +1,0 @@
-export { UtilisateurControllerService } from './services/utilisateur-controller.service';
-export { FileUploadControllerService } from './services/file-upload-controller.service';
-export { NotifControllerService } from './services/notif-controller.service';
-export { SendMailControllerService } from './services/send-mail-controller.service';
-export { DemandeurControllerService } from './services/demandeur-controller.service';
-export { DemandeControllerService } from './services/demande-controller.service';
-export { DashbordControllerService } from './services/dashbord-controller.service';
-export { CertificationControllerService } from './services/certification-controller.service';
-export { AttestationControllerService } from './services/attestation-controller.service';

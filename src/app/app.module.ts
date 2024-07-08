@@ -55,6 +55,7 @@ import { ViewFileComponent } from './Pages/view-file/view-file.component';
 import { NavlinkComponent } from './Pages/navlink/navlink.component';
 import { ResetComponent } from './Pages/reset/reset.component';
 import { UpdateDemandeurComponent } from './Pages/update-demandeur/update-demandeur.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { MbscModule } from '@mobiscroll/angular';
 
 
@@ -123,7 +124,8 @@ import { UpdateDemandeurComponent } from './Pages/update-demandeur/update-demand
     RouterModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
-     NgxSpinnerModule
+     NgxSpinnerModule,
+     NgxPaginationModule
     //  MbscModule,
     
     

@@ -50,9 +50,9 @@ export class DemandeurService implements OnInit{
     return this.httpClient.get(this.url + "/api/demandeur/demandeurDetails/" + id);
   }
 
-  getByIdDemandeur(demandeurId: number){
-    return this.httpClient.get(this.url + "/api/demande/demandez/" + demandeurId);
-  }
+  // getByIdDemandeur(demandeurId: number){
+  //   return this.httpClient.get(this.url + "/api/demande/demandez/" + demandeurId);
+  // }
   rejectedAttestation(demandeurId:number){
     return this.httpClient.get(this.url + "/api/mail/mail_rejete/" + demandeurId, {});
   }
@@ -78,8 +78,8 @@ getUsers(){
   return this.httpClient.get(this.url + "/api/demandeur/getDemandeur");
 }
 
-update(data:any){
-  return this.httpClient.post(this.url + "/api/demandeur/update" , data , {
+update(data:any):Observable<Number>{
+  return this.httpClient.put<Number>(this.url + "/api/demandeur/update" ,data , {
     headers:new HttpHeaders().set('Content-Type' , 'application/json')
   })
 }

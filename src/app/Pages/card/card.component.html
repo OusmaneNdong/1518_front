@@ -1,7 +1,18 @@
-<div class="card text-white text-center" [ngClass]="infoStatistique.infoStyle || 'bg-primary'" (click)="test(infoStatistique.slug)">
+<!-- <div class="card text-white text-center" [ngClass]="infoStatistique.infoStyle || 'bg-primary'" (click)="test(infoStatistique.slug)">
     <div class="card-body">
         <h4 class="card-title">{{infoStatistique.title}}</h4>
         <h2 class="card-text" >{{infoStatistique.nombre}}</h2>
         
     </div>
-</div>
+</div> -->
+<div class="small-box bg-info" [ngClass]="infoStatistique.infoStyle || 'bg-primary'" (click)="emitInfo(infoStatistique.slug)">
+    <div class="inner">
+      <h3>{{infoStatistique.nombre}}</h3>
+
+      <p>{{infoStatistique.title}}</p>
+    </div>
+    <div class="icon">
+      <i class="ion ion-bag"></i>
+    </div>
+    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>

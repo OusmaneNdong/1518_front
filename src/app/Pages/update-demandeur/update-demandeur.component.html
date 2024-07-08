@@ -1,1 +1,55 @@
-<p>update-demandeur works!</p>
+<div class="container card p-6">
+<p>
+  {{demandeur.fonction}}
+</p>
+
+    <form>
+
+      
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">CNI</label>
+            <input type="text"[(ngModel)]= "demandeur.nin" name="nin" class="form-control">
+            <!-- <input type="text" class="form-control" [(ngModel)]="demandeur.nin"  aria-describedby="emailHelp"> -->
+          </div>
+    
+        <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Prenom</label>
+            <input type="text" class="form-control" [(ngModel)]="demandeur.prenom" name="prenom" aria-describedby="emailHelp">
+          </div>
+    
+          <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Nom</label>
+            <input type="text" class="form-control" [(ngModel)]="demandeur.nom"  name="nom" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Telephone</label>
+            <input type="text" class="form-control" [(ngModel)]="demandeur.telephone" name="telephone" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Date de Naissance</label>
+            <input type="date" class="form-control" [(ngModel)]="demandeur.datedenaissance" name="datedenaissance" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Lieu de Naissance</label>
+            <input type="text" class="form-control" [(ngModel)]="demandeur.lieudenaissance" name="lieudenaissance" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Foction</label>
+            <input type="text" class="form-control" [(ngModel)]="demandeur.fonction" name="fonction" aria-describedby="emailHelp">
+          </div>
+    
+        <div class="mb-3">
+          <label for="exampleInputEmail1"  class="form-label">Address</label>
+          <input type="text" class="form-control" [(ngModel)]="demandeur.adresse" name="adresse" aria-describedby="emailHelp">
+        </div>
+    
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Scanner CNI</label>
+          <input type="text" class="form-control" [(ngModel)]="demandeur.scannernin" name="scannernin">
+        </div>
+    
+    
+        <button type="submit" class="btn btn-primary" (click)="onUpdate()">Modifier</button>
+      </form>
+</div>

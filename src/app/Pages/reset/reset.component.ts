@@ -5,7 +5,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/Services/auth.service';
 import { DemandeurService } from 'src/app/Services/demandeur.service';
 import { HelperService } from 'src/app/Services/helper.service';
-import { UtilisateurControllerService } from 'src/app/Services/services/services';
 import { SnackbarService } from 'src/app/Services/snackbar.service';
 import { UtilisateurService } from 'src/app/Services/utilisateur.service';
 
@@ -21,8 +20,7 @@ export class ResetComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private router:Router,private utilisateurService:UtilisateurService,
     private snackbarService:SnackbarService,private route : ActivatedRoute,
      private spinner: NgxSpinnerService, private authService: AuthService,
-     private helperService: HelperService, private demandeurService: DemandeurService,
-     private auth: UtilisateurControllerService) {}
+     private helperService: HelperService, private demandeurService: DemandeurService) {}
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');

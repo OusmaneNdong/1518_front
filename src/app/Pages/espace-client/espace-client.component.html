@@ -11,6 +11,7 @@
 
 	<button type="button" class="btn b1 btn-outline-success btn-lg"><a routerLink="/mesdemandes/{{demandeurId}}">Mes Demandes</a></button>
 	<button type="button" class="btn b2 btn-outline-info btn-lg"><a (click)="onMakeDemande() ; openSpinner()">Effectuer Une Demande</a></button>
+	<button type="button" class="btn b1 btn-outline-success btn-lg"><a [routerLink]="['/update-demandeur', demandeur.id]">Modifier</a></button>
 
 <div>
 </div>

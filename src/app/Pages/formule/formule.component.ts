@@ -11,7 +11,6 @@ import { HelperService } from 'src/app/Services/helper.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DemandeurService } from 'src/app/Services/demandeur.service';
 import { Demandeur } from 'src/app/modeles/demandeur.modele';
-import { UtilisateurControllerService } from 'src/app/Services/services/services';
 
 @Component({
   selector: 'app-formule',
@@ -37,8 +36,7 @@ export class FormuleComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private router:Router,private utilisateurService:UtilisateurService,
                private snackbarService:SnackbarService,private route : ActivatedRoute,
                 private spinner: NgxSpinnerService, private authService: AuthService,
-                private helperService: HelperService, private demandeurService: DemandeurService,
-                private auth: UtilisateurControllerService) {}
+                private helperService: HelperService, private demandeurService: DemandeurService) {}
 
     openSpinner(){
       this.spinner.show();

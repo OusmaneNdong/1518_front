@@ -6,7 +6,6 @@ import { Demandeur } from '../modeles/demandeur.modele';
 import { Demande } from '../modeles/demande.modele';
 import { Structure } from '../modeles/structure';
 import { Observable } from 'rxjs';
-import { FileUploadResponse } from './services/models';
 
 @Injectable({
   providedIn: 'root'

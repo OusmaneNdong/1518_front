@@ -33,10 +33,11 @@ nin!: string;
 
 
   ngOnInit(){
-    const id = this.activaterouter.snapshot.paramMap.get('id');
+    const id = this.activaterouter.snapshot.params['id'];
     const demandeurId = this.activaterouter.snapshot.paramMap.get('demandeurId');
-
-        console.log("id ="+demandeurId);
+      console.log("id =" + id);
+      
+        console.log("id Demandeur ="+demandeurId);
         this.getDemandeur();
         //this.makeDemande();
          this.nin= localStorage.getItem("nin")!;
@@ -92,5 +93,16 @@ logout(){
   localStorage.removeItem('nin');
   this.route.navigate(['/formule']);
 }
+
+// updateDemandeur(data:any,id:number){
+//   this.demandeurService.update(data,id).subscribe({
+//     next:(data)=>{
+//       console.log(data);
+//       this.demandeur = data;
+      
+//     }
+//   })
+
+//}
 
 }

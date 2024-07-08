@@ -1,35 +1,70 @@
 <div class="container">
-    <div class="p-2">
-        <h2>Dashbord Admin</h2>
-        <div class="d-flex flex-row justify-content-between card me-5 ms-5 mb-3 p-3">
-            <app-card *ngFor="let s of statisques" [infoStatistique]="s"  (stringChange)="multtiple($event)">
-            </app-card>
-        </div>
+
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <app-card class="col-lg-3 col-6" *ngFor="let s of statisques" [infoStatistique]="s"
+          (stringChange)="onStatut($event)">
+        </app-card>
+
+      </div>
     </div>
-    
-    <table class="table table-striped">
-    
-        <thead>
-            <th>prenom et nom</th>
-            <th>CNI</th>
-            <th>Date et Lieu de Naissance</th>
-            <th>Fonction</th>
-            <th>telephone</th>
-            <th>Statut</th>
-            <th>Action</th>
-        </thead>
-        <tbody >
-            <tr *ngFor = "let demande of demandes">
-                <td>{{ demande.demandeurDTO.fullName }} </td>
-                <td>{{ demande.demandeurDTO.nin}}</td>
-                <td>{{demande.demandeurDTO.datedenaissance}} {{demande.demandeurDTO.lieudenaissance}}</td>
-                <td>{{demande.demandeurDTO.fonction}}</td>
-                <td>{{demande.demandeurDTO.telephone}}</td>
-                <td>{{demande.statut}}</td>
-                <td><a [routerLink]="['/verificationattestation', demande.id ]" ><img src="/assets/vues/icons8-modifier-48.png" alt=""></a></td>
-            </tr>
-    
-        </tbody>
-    </table>
-    
+  </section>
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">{{titre}}</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>prenom et nom</th>
+                    <!-- <th>CNI</th> -->
+                    <th>Date et Lieu de Naissance</th>
+                    <!-- <th>Fonction</th> -->
+                    <th>telephone</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let demande of demandes">
+                    <td>{{ demande.demandeurDTO.fullName }} </td>
+                    <!-- <td>{{ demande.demandeurDTO.nin}}</td> -->
+                    <td>{{demande.demandeurDTO.datedenaissance}} {{demande.demandeurDTO.lieudenaissance}}</td>
+                    <!-- <td>{{demande.demandeurDTO.fonction}}</td> -->
+                    <td>{{demande.demandeurDTO.telephone}}</td>
+                    <td>{{demande.statut}}</td>
+                    <td><a [routerLink]="['/verificationattestation', demande.id ]"><img
+                          src="/assets/vues/icons8-modifier-48.png" alt=""></a></td>
+                  </tr>
+                </tbody>
+
+
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+
+
 </div>

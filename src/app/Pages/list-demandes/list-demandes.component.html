@@ -1,34 +1,8 @@
-<!-- <p>list-demandes works!</p> -->
-<!-- <table class="table table-striped">
 
-    <thead>
-        <th>prenom et nom</th>
-        <th>CNI</th>
-        <th>Date et Lieu de Naissance</th>
-        <th>Fonction</th>
-        <th>telephone</th>
-        <th>Statut</th>
-        <th>Action</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let demande of listDemande">
-            <td>{{ demande.demandeurDTO.fullName }} </td>
-            <td>{{ demande.demandeurDTO.nin}}</td>
-            <td>{{demande.demandeurDTO.datedenaissance}} {{demande.demandeurDTO.lieudenaissance}}</td>
-            <td>{{demande.demandeurDTO.fonction}}</td>
-            <td>{{demande.demandeurDTO.telephone}}</td>
-            <td>{{demande.statut}}</td>
-            <td><a [routerLink]="['/verificationattestation', demande.id ]"><img src="/assets/vues/icons8-modifier-48.png" alt=""></a></td>
-        </tr>
-
-    </tbody>
-</table> -->
-
-
-<!-- initial table -->
-<!-- initial table -->
-
-<div _ngcontent-odu-c42="" class="container-fluid">
+<!-- <div class="container">
+    <app-admin-dasboard></app-admin-dasboard>
+</div> -->
+<!-- <div _ngcontent-odu-c42="" class="container-fluid">
     <div _ngcontent-odu-c42="" class="row">
         <div _ngcontent-odu-c42="" class="card">
             <div _ngcontent-odu-c42="" class="card-header">
@@ -41,8 +15,9 @@
                                 aria-controls="example1" class="form-control form-control-sm"></label></div>
                     <div _ngcontent-odu-c42="" class="row">
                         <div _ngcontent-odu-c42="" class="col-sm-12">
+                             -->
                             
-                            <table _ngcontent-odu-c42="" id="example1" aria-describedby="example1_info"
+                            <!-- <table _ngcontent-odu-c42="" id="example1" aria-describedby="example1_info"
                                 class="table table-bordered table-striped dataTable dtr-inline">
                                 <thead _ngcontent-odu-c42="">
                                     <tr _ngcontent-odu-c42="">
@@ -80,88 +55,11 @@
                                         <td _ngcontent-odu-c42="">{{demande.statut}}</td>
                                         <td _ngcontent-odu-c42=""><a [routerLink]="['/verificationattestation', demande.id ]"><img src="/assets/vues/icons8-modifier-48.png" alt=""></a></td>
                                     </tr>
-                                    <!-- <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" tabindex="0" class="dtr-control sorting_1">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Firefox 1.5</td>
-                                        <td _ngcontent-odu-c42="">Win 98+ / OSX.2+</td>
-                                        <td _ngcontent-odu-c42="">1.8</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="odd">
-                                        <td _ngcontent-odu-c42="" tabindex="0" class="dtr-control sorting_1">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Firefox 2.0</td>
-                                        <td _ngcontent-odu-c42="">Win 98+ / OSX.2+</td>
-                                        <td _ngcontent-odu-c42="">1.8</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" tabindex="0" class="dtr-control sorting_1">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Firefox 3.0</td>
-                                        <td _ngcontent-odu-c42="">Win 2k+ / OSX.3+</td>
-                                        <td _ngcontent-odu-c42="">1.9</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="odd">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Camino 1.0</td>
-                                        <td _ngcontent-odu-c42="">OSX.2+</td>
-                                        <td _ngcontent-odu-c42="">1.8</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Camino 1.5</td>
-                                        <td _ngcontent-odu-c42="">OSX.3+</td>
-                                        <td _ngcontent-odu-c42="">1.8</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="odd">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Netscape 7.2</td>
-                                        <td _ngcontent-odu-c42="">Win 95+ / Mac OS 8.6-9.2</td>
-                                        <td _ngcontent-odu-c42="">1.7</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Netscape Browser 8</td>
-                                        <td _ngcontent-odu-c42="">Win 98SE+</td>
-                                        <td _ngcontent-odu-c42="">1.7</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="odd">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Netscape Navigator 9</td>
-                                        <td _ngcontent-odu-c42="">Win 98+ / OSX.2+</td>
-                                        <td _ngcontent-odu-c42="">1.8</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">Gecko</td>
-                                        <td _ngcontent-odu-c42="">Mozilla 1.0</td>
-                                        <td _ngcontent-odu-c42="">Win 95+ / OSX.1+</td>
-                                        <td _ngcontent-odu-c42="">1</td>
-                                        <td _ngcontent-odu-c42="">A</td>
-                                    </tr>
-                                    <tr _ngcontent-odu-c42="" class="even">
-                                        <td _ngcontent-odu-c42="" class="sorting_1 dtr-control">id</td>
-                                        <td _ngcontent-odu-c42="">Mozilla 1.0</td>
-                                        <td _ngcontent-odu-c42="">Win 95+ / OSX.1+</td>
-                                        <td _ngcontent-odu-c42="">1</td>
-                                        <td _ngcontent-odu-c42="">Cours</td>
-                                    </tr> -->
+
                                 </tbody>
-                                <!-- <tfoot _ngcontent-odu-c42="">
-                                    <tr _ngcontent-odu-c42="">
-                                        <th _ngcontent-odu-c42="" rowspan="1" colspan="1">Prenon et Nom</th>
-                                        <th _ngcontent-odu-c42="" rowspan="1" colspan="1">CNI</th>
-                                        <th _ngcontent-odu-c42="" rowspan="1" colspan="1">Date et Lieu de Naissance</th>
-                                        <th _ngcontent-odu-c42="" rowspan="1" colspan="1">Statut</th>
-                                        <th _ngcontent-odu-c42="" rowspan="1" colspan="1">Action</th>
-                                    </tr>
-                                </tfoot> -->
-                            </table>
-                        </div>
+
+                            </table> -->
+                        <!-- </div>
                     </div>
                     <div _ngcontent-odu-c42="" class="row">
                         <div _ngcontent-odu-c42="" class="col-sm-12 col-md-5">
@@ -206,4 +104,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

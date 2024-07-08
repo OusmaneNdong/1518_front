@@ -17,7 +17,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <!-- <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
@@ -27,22 +27,22 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
-    </ul>
+    </ul> -->
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <!-- <ul class="navbar-nav ml-auto"> -->
      
 
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+      <!-- <li class="nav-item dropdown"> -->
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          <a href="#" class="dropdown-item"> -->
             <!-- Message Start -->
-            <div class="media">
+            <!-- <div class="media">
               <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
@@ -52,13 +52,13 @@
                 <p class="text-sm">Call me whenever you can...</p>
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
-            </div>
+            </div> -->
             <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <!-- </a> -->
+          <!-- <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item"> -->
             <!-- Message Start -->
-            <div class="media">
+            <!-- <div class="media">
               <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
@@ -68,12 +68,10 @@
                 <p class="text-sm">I got your message bro</p>
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
+            </div> -->
+          <!-- </a> -->
+          <!-- <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <!-- Message Start -->
             <div class="media">
               <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
@@ -85,14 +83,13 @@
                 <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
               </div>
             </div>
-            <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
-      </li>
+      </li> -->
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -127,8 +124,8 @@
         <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
-      </li>
-    </ul>
+      </li> -->
+    <!-- </ul> -->
   </nav>
   <!-- /.navbar -->
 
@@ -150,14 +147,41 @@
       </div>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
+            <li class="nav-item menu-is-opening menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Listes De Demandes
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview" style="display: block;">
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tous les Demandes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Demandes En Cours</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Demandes Approuvées</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Demandes Rejeteés</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
         </ul>
       </nav>
     </div>
@@ -174,12 +198,13 @@
       </div>
     </div>
     <section class="content">
-      <div class="container-fluid">
+      <app-admin-dasboard></app-admin-dasboard>
+      <router-outlet></router-outlet>
+      <!-- <div class="container-fluid">
         <div class="row">
           <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
               <div class="inner">
-                <!-- <h3>150</h3> -->
                 <h4>{{ data.length }}</h4>
                 <p>Toutes les demandes</p>
               </div>
@@ -205,7 +230,6 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
               <div class="inner">
-                <!-- <h3>53<sup style="font-size: 20px">%</sup></h3> -->
                 <h4>{{ dataApprouved.length }}</h4>
                 <p>Demandes Approuvées</p>
               </div>
@@ -219,7 +243,6 @@
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
               <div class="inner">
-                <!-- <h3>65</h3> -->
                 <h4>{{ dataRejeted.length }}</h4>
                 <p>Demandes Rejeteés</p>
               </div>
@@ -230,9 +253,10 @@
             </div>
           </div>
         </div>
-          <router-outlet></router-outlet>
-      </div>
+          
+      </div> -->
     </section>
+   
   </div>
   <footer class="main-footer">
     <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Attestation</a>.</strong>

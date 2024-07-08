@@ -12,7 +12,6 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AdminDasboardComponent implements OnInit {
 
-
 statisques: Array<InfoStatistique> = [];
 private ntDemande = 0;
 private neDemande = 0;
@@ -25,36 +24,20 @@ coursDemande: Demande[]=[];
 approuveDemande: Demande[]=[];
 statutDemande: Demande[]=[];
 demandes: Demande[]=[];
+titre: string = "La liste des demandes";
 constructor(private dashbordService:DashbordService, private demandeService: DemandService){}
 
 ngOnInit(): void {
   this.initialize();
   this.getAll();
-  this.getAllApprouved();
-  this.getAllCours();
-  this.getAllRejeted();
-}
+  }
 
 getAll(){
   this.demandeService.getAllDemandes().subscribe((response: any)=>{
     this.demandes = response;
   })
 }
-getAllRejeted(){
-  
-}
-getAllCours(){
-  
-}
-getAllApprouved(){
-  
-}
 
-getByStatut(statut: string){
-  this.dashbordService.getByStatut(statut).subscribe((response:any)=>{
-    this.statutDemande = response;
-  })
-}
 
 private async initialize(){
 
@@ -112,12 +95,14 @@ private async initialize(){
      }
   ]
 }
-multtiple(val: string) {
+onStatut(val: string) {
   if(val==="all"){
+    this.titre = "La liste des demandes";
     this.demandeService.getAllDemandes().subscribe((response:any)=>{
       this.demandes = response;
     })
   }else{
+    this.titre = "La liste des demandes "+val;
     this.dashbordService.getByStatut(val).subscribe((response:any)=>{
       this.demandes = response;
     })
