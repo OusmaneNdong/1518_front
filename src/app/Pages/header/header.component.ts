@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UtilisateurService } from 'src/app/Services/utilisateur.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as $ from 'jquery';
+import { DemandService } from 'src/app/Servicess/demand.service';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
+import { Demande } from 'src/app/modeles/demande.modele';
 
 @Component({
   selector: 'app-header',
@@ -9,31 +12,27 @@ import { UtilisateurService } from 'src/app/Services/utilisateur.service';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private auth: UtilisateurService,  private router:Router){}
+  demande: Demande  = {};
 
-  isLogin =false;
+  constructor(private auth: UtilisateurService,private demandeService: DemandService,  private router:Router, private route: ActivatedRoute){}
+
   
   ngOnInit(): void {
-    this.isLogin = this.auth.isLoaging
+    const id = Number(this.route.snapshot.params['id']);
+    this.getDemande(id);
 
-    if(localStorage.getItem("token")){
-       this.isLogin = true;
-    }
-      console.log(this.isLogin);
-    
   }
 
-refresh(){
-  window.location.reload();
-}
+  getDemande(id:number){
+    this.demandeService.getDemanderById(id).subscribe({
+       next:(data)=>{
+         this.demande = data;
+         
+       }
+     })
+   }
 
-deconnect(){
-  localStorage.removeItem('token');
-  localStorage.removeItem('userId');
-  localStorage.removeItem('profile');
-  localStorage.removeItem('nin');
-  this.router.navigate(['/formule']);
-  this.refresh()
-}
+
 
 }
+

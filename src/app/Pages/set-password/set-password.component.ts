@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { HelperService } from 'src/app/Services/helper.service';
-import { SnackbarService } from 'src/app/Services/snackbar.service';
-import { UtilisateurService } from 'src/app/Services/utilisateur.service';
+import { HelperService } from 'src/app/Servicess/helper.service';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
 import Swal from 'sweetalert2';
-import { GlobalConstants } from '../shared/global-constants';
 
 @Component({
   selector: 'app-set-password',
@@ -32,7 +30,7 @@ export class SetPasswordComponent  implements OnInit{
   token: string = "";
 
   constructor(private formBulider:FormBuilder, private utilisateurService:UtilisateurService, 
-    private snackbarService:SnackbarService,private router: Router,
+   private router: Router,
     private spinner: NgxSpinnerService,private helperService: HelperService, private activateRoute: ActivatedRoute
     ) { }
 
@@ -70,7 +68,7 @@ console.log(data);
           showConfirmButton: false,
           timer: 5000
         }).then(() => {
-          this.router.navigate(['/formule']);      });
+          this.router.navigate(['/connecter']);      });
         
       },
       error:(err:any)=>{
@@ -81,7 +79,7 @@ console.log(data);
             icon: "error",
             title: "mot de passes non confromes.",
             showConfirmButton: false,
-            timer: 5000
+            timer: 3000
           })
           
         }
@@ -91,7 +89,7 @@ console.log(data);
             icon: "error",
             title: "Token expiré! ",
             showConfirmButton: false,
-            timer: 5000
+            timer: 3000
           })
           
         }
@@ -101,7 +99,7 @@ console.log(data);
             icon: "error",
             title: "Token invalide! ",
             showConfirmButton: false,
-            timer: 5000
+            timer: 3000
           })
         }   
       }

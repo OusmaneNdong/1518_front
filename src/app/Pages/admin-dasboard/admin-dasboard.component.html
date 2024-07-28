@@ -1,8 +1,5 @@
-<div class="container">
-
   <section class="content">
     <div class="container-fluid">
-      <!-- Small boxes (Stat box) -->
       <div class="row">
         <app-card class="col-lg-3 col-6" *ngFor="let s of statisques" [infoStatistique]="s"
           (stringChange)="onStatut($event)">
@@ -12,24 +9,28 @@
     </div>
   </section>
 
+  <div class="container">
 
   <section class="content">
+
+    
+    
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card" style="background-color: rgb(241, 240, 240);">
             <div class="card-header">
+              <input class="form-control" style="width: 50%; float: right;" type="search" name="name" [(ngModel)]="name" (ngModelChange)="Search()" placeholder=" recherchez par prénom,nom,telephone,statut" >
               <h3 class="card-title">{{titre}}</h3>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
+            <div class="">
+              <table id="" class="table" style="background: none;">
                 <thead>
                   <tr>
+                    <th>#</th>
                     <th>prenom et nom</th>
-                    <!-- <th>CNI</th> -->
                     <th>Date et Lieu de Naissance</th>
-                    <!-- <th>Fonction</th> -->
                     <th>telephone</th>
                     <th>Statut</th>
                     <th>Action</th>
@@ -37,34 +38,25 @@
                 </thead>
                 <tbody>
 
-                  <tr *ngFor="let demande of demandes">
+                  <tr *ngFor="let demande of demandes | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+                    <td>{{demande.id}}</td>
                     <td>{{ demande.demandeurDTO.fullName }} </td>
-                    <!-- <td>{{ demande.demandeurDTO.nin}}</td> -->
                     <td>{{demande.demandeurDTO.datedenaissance}} {{demande.demandeurDTO.lieudenaissance}}</td>
-                    <!-- <td>{{demande.demandeurDTO.fonction}}</td> -->
                     <td>{{demande.demandeurDTO.telephone}}</td>
                     <td>{{demande.statut}}</td>
-                    <td><a [routerLink]="['/verificationattestation', demande.id ]"><img
-                          src="/assets/vues/icons8-modifier-48.png" alt=""></a></td>
+                    <td><a [routerLink]="['/verificationattestation', demande.id ]">Edit</a></td>
+                    <!-- <td><a [routerLink]="['/verificationattestation', demande.id ]"><img src="/assets/vues/icons8-modifier-48.png" alt=""></a></td> -->
                   </tr>
                 </tbody>
-
-
               </table>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
-
-
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
   </section>
-
-
-
 </div>
+<div class="mt-8 py-5 flex justify-center item-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+

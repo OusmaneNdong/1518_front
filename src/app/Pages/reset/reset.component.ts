@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AuthService } from 'src/app/Services/auth.service';
-import { DemandeurService } from 'src/app/Services/demandeur.service';
-import { HelperService } from 'src/app/Services/helper.service';
-import { SnackbarService } from 'src/app/Services/snackbar.service';
-import { UtilisateurService } from 'src/app/Services/utilisateur.service';
+import { AuthService } from 'src/app/Servicess/auth.service';
+import { DemandeurService } from 'src/app/Servicess/demandeur.service';
+import { HelperService } from 'src/app/Servicess/helper.service';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
 
 @Component({
   selector: 'app-reset',
@@ -18,7 +17,7 @@ export class ResetComponent implements OnInit {
   forgotPasswordForm:any = FormGroup;
 
   constructor(private formBuilder:FormBuilder, private router:Router,private utilisateurService:UtilisateurService,
-    private snackbarService:SnackbarService,private route : ActivatedRoute,
+    private route : ActivatedRoute,
      private spinner: NgxSpinnerService, private authService: AuthService,
      private helperService: HelperService, private demandeurService: DemandeurService) {}
 

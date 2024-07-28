@@ -16,4 +16,6 @@ export interface Demandeur{
     utilisateurDTO?: any;
     demandeDTO?: any;
     completed?:boolean;
+    displayPicture?: any;
+    type?:any;
 }

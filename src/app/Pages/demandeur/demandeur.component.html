@@ -1,127 +1,111 @@
 <app-head></app-head>
-<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
-  <p style="font-size: 20px; color: white">En cours...</p>
-</ngx-spinner>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sign up form</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container-fluid">
-        
-      <form [formGroup]="demandeurForm" enctype="multipart/form-data">
-        <div class="row">
-
-          <div class="col-md-6 col-sm-12">
-            <label for="telephone">Téléphone<span>*</span></label>
-            <input id="telephone" type="tel" name="telephone" formControlName="telephone" required placeholder="Numéro Téléphone"/>
-            <div *ngIf="demandeurForm.controls.telephone.touched && demandeurForm.controls.telephone.invalid">
-              <span *ngIf="demandeurForm.controls.telephone.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.telephone.pattern">This field is invalid.</span>
-             </div>
-          </div>
-
-          <div class="col-md-6 col-sm-12">
-            <label for="datedenaissance">Date de Naissace<span>*</span></label>
-            <input id="datedenaissance" type="date" name="datedenaissance" formControlName="datedenaissance" required placeholder="Date de Naissace"/>
-            <div *ngIf="demandeurForm.controls.datedenaissance.touched && demandeurForm.controls.datedenaissance.invalid">
-              <span *ngIf="demandeurForm.controls.datedenaissance.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.datedenaissance.errors.pattern">This field is invalid.</span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <label for="lieudenaissance">Lieu de Naissance<span>*</span></label>
-            <input id="lieudenaissance" type="text" formControlName="lieudenaissance" name="lieudenaissance" required placeholder="Lieu de Naissance"/>
-            <div *ngIf="demandeurForm.controls.lieudenaissance.touched && demandeurForm.controls.lieudenaissance.invalid">
-              <span *ngIf="demandeurForm.controls.lieudenaissance.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.lieudenaissance.errors.pattern">This field is invalid.</span>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-sm-12">
-            <label for="nin">CNI<span>*</span></label>
-            <input id="nin" type="text" name="nin" formControlName="nin" [(ngModel)]="nin" required placeholder="CNI"/>
-            <div *ngIf="demandeurForm.controls.nin.touched && demandeurForm.controls.nin.invalid">
-              <span *ngIf="demandeurForm.controls.nin.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.nin.errors.pattern">This field is invalid.</span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            
-            <label for="scannernin">Scanner CNI<span>*</span></label>
-            <input type="file" (change)="onImageUpload($event)" formControlName="scannernin" required/>
-            <!-- <div *ngIf="demandeurForm.controls.scannernin.touched && demandeurForm.controls.scannernin.invalid">
-              <span *ngIf="demandeurForm.controls.scannernin.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.scannernin.pattern">This field is invalid.</span>
-            </div> -->
-          </div>
-
-          <div class="col-md-6 col-sm-12">
-            <label for="adresse">Adresse<span>*</span></label>
-            <input id="adresse" type="text" name="adresse"  formControlName="adresse" required placeholder="Votre Adresse"/>
-            <div *ngIf="demandeurForm.controls.adresse.touched && demandeurForm.controls.adresse.invalid">
-              <span *ngIf="demandeurForm.controls.adresse.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.adresse.pattern">This field is invalid.</span>
-             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <label for="fonction">Fonction<span>*</span></label>
-            <input id="fonction" type="text" name="fonction" formControlName="fonction" required placeholder="Fonction"/>
-            <div *ngIf="demandeurForm.controls.fonction.touched && demandeurForm.controls.fonction.invalid">
-              <span *ngIf="demandeurForm.controls.fonction.errors.required">veuillez renseinger ce champ !</span>
-              <span *ngIf="demandeurForm.controls.fonction.pattern">This field is invalid.</span>
-             </div>
-          </div>
-
-          <div class="col-md-6 col-sm-12">
-            <label>Sexe<span>*</span></label>
-          <select style="width: 98%; height: 50%;" formControlName="sexe">
-            <option selected value="" disabled selected>--- select ---</option>
-            <option value="masculin" >Masculin</option>
-            <option value="feminin">Feminin</option>
-          </select>
-          <div *ngIf="demandeurForm.controls.sexe.touched && demandeurForm.controls.sexe.invalid">
-            <span *ngIf="demandeurForm.controls.sexe.errors.required">veuillez renseinger ce champ !</span>
-            <span *ngIf="demandeurForm.controls.sexe.pattern">This field is invalid.</span>
-           </div>
-          </div>
-        </div>
-        
-        <div class="btn-block">
-          <div class="row">
-            <div class="col">
-              <button type="submit" style="margin-right: 20px;" class="btn btn-danger" routerLink="/espaceClient">Annuler</button>
-              <button  type="submit" class="btn btn-success" (click)="handleSubmit(); openSpinner()" [disabled]="(demandeurForm.invalid)">Submit</button></div>
-             
-          </div>
-
-        </div>
-      </form>
-            
-      
-         
-    </div>
-
-                  
+<div class="tac">
+    <div class="container">
+        <header>Complétez Vos Informtions</header>
+        <form [formGroup]="demandeurForm">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Informations Personnelles</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>CNI<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" name="nin" formControlName="nin" [(ngModel)]="nin" placeholder="Saisir votre Numéro CNI" style="background-color: rgb(221, 212, 212)" readonly>
+                            <div *ngIf="demandeurForm.controls.nin.touched && demandeurForm.controls.nin.invalid">
+                              <span *ngIf="demandeurForm.controls.nin.errors.required">veuillez renseinger ce champ !</span>
+                              <span *ngIf="demandeurForm.controls.nin.errors.pattern">This field is invalid.</span>
+                            </div>
+                          
+                        </div>
+                        <div class="input-field">
+                          <label>Prénom<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" name="prenom" formControlName="prenom" [(ngModel)]="utilisateur.prenom" placeholder="Sairir votre Prénom" style="background-color: rgb(221, 212, 212);" readonly>
+                        </div>
+                        <div class="input-field">
+                          <label>Nom<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" name="nom" formControlName="nom" [(ngModel)]="utilisateur.nom" placeholder="Saisir votre Nom" style="background-color: rgb(221, 212, 212)" readonly>
+                        </div>
+                        <div class="input-field">
+                            <label>Date de Naissance<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="date" name="datedenaissance" formControlName="datedenaissance" placeholder="Sairir votre date de naissance" min="2007"  required>
+                            <div *ngIf="demandeurForm.controls.datedenaissance.touched && demandeurForm.controls.datedenaissance.invalid">
+                              <span  style="color: red;" *ngIf="demandeurForm.controls.datedenaissance.errors.required">veuillez renseinger ce champ !</span>
+                              <span  style="color: red;" *ngIf="demandeurForm.controls.datedenaissance.errors.pattern">This field is invalid.</span>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                          <label>Lieu de Naissance<span style="color: red; font-size: 15px;">*</span></label>
+                          <input type="text" formControlName="lieudenaissance" name="lieudenaissance" placeholder="Sairir votre lieu de Naissance" required>
+                          <div *ngIf="demandeurForm.controls.lieudenaissance.touched && demandeurForm.controls.lieudenaissance.invalid">
+                            <span style="color: red;" *ngIf="demandeurForm.controls.lieudenaissance.errors.required">veuillez renseinger ce champ !</span>
+                            <span style="color: red;" *ngIf="demandeurForm.controls.lieudenaissance.errors.pattern">This field is invalid.</span>
+                          </div>
+                      </div>
+                        <div class="input-field">
+                            <label>Sexe<span style="color: red; font-size: 15px;" >*</span></label>
+                            <select name="sexe" formControlName="sexe" required>
+                                <option disabled selected>     ---  secletionnez  ---  </option>
+                                <option value="Masculin">Masculin</option>
+                                <option value="feminin">Feminin</option>
+                            </select>
+                             <div  *ngIf="demandeurForm.controls.sexe.touched && demandeurForm.controls.sexe.invalid">
+                         <span style="color: red;" *ngIf="demandeurForm.controls.sexe.errors.required">veuillez renseinger ce champ !</span>
+                         <span style="color: red;" *ngIf="demandeurForm.controls.sexe.pattern">This field is invalid.</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="details ID">
+                    <span class="title">Autres Informations</span>
+                    <div class="fields">
+                        <div class="input-field2 input-field">
+                            <label>Adresse<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" placeholder="Sairir votre Adresse"  formControlName="adresse" required>
+                            <div *ngIf="demandeurForm.controls.adresse.touched && demandeurForm.controls.adresse.invalid">
+                              <span *ngIf="demandeurForm.controls.adresse.errors.required">veuillez renseinger ce champ !</span>
+                              <span *ngIf="demandeurForm.controls.adresse.pattern">This field is invalid.</span>
+                             </div>
+                        </div>
+                        <div class="input-field2 input-field">
+                            <label>Téléphone<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" placeholder="telephone :  --  ---  --   --" formControlName="telephone" required>
+                            <div *ngIf="demandeurForm.controls.telephone.touched && demandeurForm.controls.telephone.invalid">
+                              <span style="color: red;" *ngIf="demandeurForm.controls.telephone.errors.required">veuillez renseinger ce champ !</span>
+                              <span style="color: red;" *ngIf="demandeurForm.controls.telephone.pattern">This field is invalid.</span>
+                             </div>
+                        </div>
+                        <div class="input-field2 input-field">
+                            <label>Fonction<span style="color: red; font-size: 15px;">*</span></label>
+                            <input type="text" name="fonction" formControlName="fonction" placeholder="Sairir votre fonction" required>
+                            <div *ngIf="demandeurForm.controls.fonction.touched && demandeurForm.controls.fonction.invalid">
+                              <span style="color: red;" *ngIf="demandeurForm.controls.fonction.errors.required">veuillez renseinger ce champ !</span>
+                              <span style="color: red;" *ngIf="demandeurForm.controls.fonction.pattern">This field is invalid.</span>
+                             </div>
+                        </div>
+                        <div class="input-field2 input-field">
+                          <label>Scanner CNI<span style="color: red; font-size: 15px;">*</span></label>
+                          <input class="form-control" type="file" (change)="onFileSelected($event)"/>
+                           <div *ngIf="demandeurForm.controls.scannernin.touched && demandeurForm.controls.scannernin.invalid">
+                            <span style="color: red;" *ngIf="demandeurForm.controls.scannernin.errors.required">veuillez renseinger ce champ !</span>
+                            <span style="color: red;" *ngIf="demandeurForm.controls.scannernin.pattern">This field is invalid.</span>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="button-a">
+                      <button class="nextBtn" type="submit" (click)="handleSubmit(); openSpinner(); save()">
+                        <span style="color: red;" class="btnText" style="color: white;">Complétez</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                    <button class="nextBtn" routerLink="/formule" style="color:white; background-color: red;">
+                      <span class="btnText">Annuler</span>
+                      <i class="uil uil-navigator"></i>
+                      <span class="mdi--cancel-bold"></span>
+                  </button>
+                    </div>
                     
+                </div> 
+            </div>
 
-              
-  </body>
-</html>
-
-
-
-
-
-
-
-<app-footer></app-footer>
+        </form>
+    </div>
+    </div>
+    <app-footer></app-footer>

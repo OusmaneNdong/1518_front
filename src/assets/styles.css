@@ -134,7 +134,7 @@ a:hover, a:active {
 
 .badge-soft-white {
   color: #fff;
-  background: rgba(225, 225, 225, 0.1);
+  /* background: rgba(225, 225, 225, 0.1); */
   padding: 5px 20px;
   font-size: 14px;
   display: inline-block;
@@ -4014,8 +4014,9 @@ footer {
 
 /* footer-style1 */
 .footer-style1 > .container {
-  padding-top: 90px;
-  padding-bottom: 90px; }
+  padding-top: 20px;
+  /* padding-bottom: 90px; */
+}
 .footer-style1 h3 {
   color: #fff;
   font-size: 18px;

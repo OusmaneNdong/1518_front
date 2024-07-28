@@ -4,7 +4,31 @@
   margin-top: 20%;
 }
 .b2{
-  margin-left: 5%;
-  margin-bottom: 10%;
-  margin-top: 20%;
+  float: right;
+  background-color: green;
+  padding: 9px;
+  border: none;
+}
+.b2 a{
+  color: white;
+}
+.b2:hover{
+  background-color: green;
+}
+.card{
+  width: 100%;
+  margin-top: 65px;
+  background-color: rgb(236, 232, 232);
+}
+
+h3{
+  text-transform: uppercase;
+  text-align: center;
+  padding: 40px;
+  padding-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+.table{
+  background-color: white;
 }

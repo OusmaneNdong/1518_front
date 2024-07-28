@@ -1,0 +1,22 @@
+<div class="container">
+    <h3 class="text-primary text-center">Angular file upload | download example</h3><hr/>
+  </div>
+  
+  
+  <div class="container">
+  
+    <!-- <label class="">UserName</label> <input class="form-control" type="text" [(ngModel)]="userName"/> -->
+    <input class="form-control" type="file" (change)="onFileSelected($event)"/>
+    <button (click)="save()" class="btn btn-primary">Save</button>
+  
+  <div class="row">
+    <div class="col-sm-6 col-md-3" *ngFor="let user of userList">
+        <div class="card text-center" style="width: 200px;height: 200px;margin-bottom: 50px;">
+          <img class="card-img-top rounded-circle" style="width: 100%;height: 100%;object-fit: cover;" [src]="'data:image/png;base64,'+user.displayPicture" alt="Title" />
+          <div class="card-body">
+            <h4 class="card-title">{{user.userName}}</h4>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>

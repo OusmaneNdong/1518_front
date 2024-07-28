@@ -10,18 +10,16 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: #EDEEE9; */
   padding: 30px;
 }
 .container{
   position: relative;
   max-width: 850px;
   width: 100%;
-  /* background: #ffffff; */
   padding: 40px 30px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.2);
   perspective: 2700px;
-  margin-top: 75px;
+  background-color: #f2f2f2;
 }
 .container .cover{
   position: absolute;
@@ -33,8 +31,6 @@ body{
   transition: all 1s ease;
   transform-origin: left;
   transform-style: preserve-3d;
-  /* background: rgb(226, 226, 230); */
-  /* background-color: #D8DBCE; */
   
 }
 .container #flip:checked ~ .cover{
@@ -48,10 +44,17 @@ body{
   height: 100%;
   width: 100%;
 }
+.container .cover .front{
+  background-image: url("src/assets/vues/3332.jpeg");
+  background-size: cover;
+}
 .cover .back{
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  /* background-color: #D8DBCE; */
+  background-image: url("/assets/vues/im16.jpeg");
+  background-size: cover;
+  background-position: center;
+
   
 }
 .container .cover::before,
@@ -80,12 +83,12 @@ body{
 }
 .container .cover img{
   position: absolute;
-  height: 472px;
+  height: 432px;
   width: 423px;
   object-fit: cover;
   z-index: 10;
   margin-left: 2px;
-  margin-top: 10px;
+  margin-top: 1px;
 }
 .container .cover .text{
   position: absolute;
@@ -131,11 +134,11 @@ body{
   width: calc(100% / 2 - 25px);
 }
 .forms .form-content .title{
-  position: relative;
   font-size: 32px;
   font-weight: 500;
   font-family: ar;
   color: #333;
+  text-align: center;
 }
 .forms .form-content .title:before{
   content: '';
@@ -149,16 +152,6 @@ body{
 .forms .signup-form  .title:before{
   width: 20px;
 }
-.container{
-  /* background-color: #EDEEE9;  */
-}
-.login-form{
-  /* background-color: #EDEEE9; */
-}
-.signup-form{
-  /* background-color: #EDEEE9; */
-}
-
 
 .forms .form-content .input-boxes{
   margin-top: 30px;
@@ -168,8 +161,8 @@ body{
   align-items: center;
   height: 50px;
   width: 100%;
-  margin: 10px 0;
-  position: relative;
+  /* margin: 10px 0; */
+  /* position: relative; */
 }
 .form-content .input-box input:hover{
   background-color: rgb(248, 248, 249);
@@ -185,7 +178,6 @@ body{
   border-bottom: 2px solid rgba(6, 5, 5, 0.2);
   transition: all 0.3s ease;
   background: transparent;
-  /* background-color: #EDEEE9; */
 }
 .form-content .input-box input:focus,
 .form-content .input-box input:valid{
@@ -272,23 +264,13 @@ hr{
   background-color: rgb(201, 197, 197);
   margin-top: 85px;
 }
-marquee{
-  margin-top: -20px;
-}
 
-.b1{
-  margin-left: 50px;
-  width: 95px;
-  height: 35px;
-}
 .b2{
   height: 35px;
-  margin-left: 10px;
-  width: 95px;
+  width: 100%;
 }
 .signup-form button{
   height: 35px;
-  width: 65px;
   margin-left: 18%;
   margin-top: 15px;
 }
@@ -302,7 +284,14 @@ marquee{
 .ghost{
  border-radius: 6px;
   height: 25px;
-  width: 65px;
+  width: 80px;
   font-size: 15px;
   margin-right: -160px;
+}
+.text a{
+  color: blue;
+}
+.envoi{
+  padding: 3px;
+  width: 70px;
 }

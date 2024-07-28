@@ -1,14 +1,11 @@
 <p>dowload works!</p>
-
-
-
 <table class="table table-striped">
     <thead>
         <th>file</th>
     </thead>
     <tbody>
         <tr *ngFor = "let demande of demandes">
-            <td>{{ demande.urlattestation }} <a  (click)="load(demande.urlattestation)" style="cursor: pointer;" >download</a> </td>
+            <td>{{ demande.urlattestation }} <a  (click)="load(demande.urlattestation)" style="cursor: pointer;" ><img src="/assets/icons/download.png" width="50px" height="40px" alt="download"></a> </td>
         </tr>
 
     </tbody>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DashbordService } from '../Services/dashbord.service';
+import { DashbordService } from '../Servicess/dashbord.service';
 import { Router } from '@angular/router';
 import { Demandeur } from '../modeles/demandeur.modele';
 import { Demande } from '../modeles/demande.modele';
+import { HelperService } from '../Servicess/helper.service';
+import { UtilisateurService } from '../Servicess/utilisateur.service';
 
 @Component({
   selector: 'app-dash',
@@ -11,18 +13,21 @@ import { Demande } from '../modeles/demande.modele';
 })
 export class DashComponent implements OnInit{
 
-  // data!: Demandeur[] ;
+
+ fullName: string = " ";
   data:any;
   dataApprouved: Demande[]=[];
   dataRejeted: Demande[]=[];
   dataCours: Demande[]=[];
-  //approuves: Demande[]=[];
   rejetes: Demande[]=[];
   cours: Demande[]=[];
 
-constructor(private dashbordService:DashbordService,private routes:Router){}
+constructor(private dashbordService:DashbordService,private routes:Router,private helper: HelperService, private utilisateurService: UtilisateurService){}
 
   ngOnInit(): void {
+    this.fullName = this.utilisateurService.fullName;
+    
+    this.getFullName()
     
     this.getCount();
     
@@ -30,9 +35,12 @@ constructor(private dashbordService:DashbordService,private routes:Router){}
     this.getCours();
     this.getRejeted();
 
-   //this.getAllApprouved();
-    this.getAllCours();
-    this.getAllRejeted();
+    // this.getAllCours();
+    // this.getAllRejeted();
+  }
+
+  getFullName(){
+    this.fullName = this.helper.fullName;
   }
 
    getCount(){
@@ -61,20 +69,12 @@ constructor(private dashbordService:DashbordService,private routes:Router){}
       
     })
   }
-  // getAllApprouved(){
-  //   this.dashbordService.getByStatutApprouved().subscribe((response:any)=>{
-  //     this.approuves = response;
-      
-  //   })
-  // }
-  getAllRejeted(){
-    // this.dashbordService.getByStatutRejeted().subscribe((response:any)=>{
-    //   this.rejetes = response;
-      
-    // })
+
+  logout(){
+    localStorage.clear();
+    this.routes.navigate(['/connecter']);
   }
-  getAllCours(){
-    
-  }
+
+
 
 }

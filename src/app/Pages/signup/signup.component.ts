@@ -1,12 +1,7 @@
-// 
-
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SnackbarService } from 'src/app/Services/snackbar.service';
-import { UtilisateurService } from 'src/app/Services/utilisateur.service';
-import { GlobalConstants } from '../shared/global-constants';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import Swal from 'sweetalert2';
@@ -29,7 +24,6 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private utilisateurService: UtilisateurService,
-    private snackbarService: SnackbarService,
     private spinner: NgxSpinnerService
   ) {}
 
@@ -72,7 +66,7 @@ export class SignupComponent implements OnInit {
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
-  }, 4000);
+  }, 1000);
   }
 
   matchValidator(controlName: string, matchingControlName: string): ValidatorFn {
@@ -116,7 +110,6 @@ export class SignupComponent implements OnInit {
 
   handleSubmit() {
     if (this.signupForm.invalid) {
-      this.snackbarService.openSnackBar("Form is invalid", " ");
       return;
     }
 
@@ -133,8 +126,7 @@ export class SignupComponent implements OnInit {
 
     this.utilisateurService.signUp(data).subscribe({
       next:(data)=>{
-        //this.snackbarService.openSnackBar(this.responseMessage, " ");
-        this.router.navigate(['/formule']); 
+        this.router.navigate(['/connecter']); 
       },
       error:(err:any)=>{
         if (err.error.errorMessage==='EMAIL_EXIST') {
@@ -164,31 +156,7 @@ export class SignupComponent implements OnInit {
       }
     })
 
-    /*this.utilisateurService.signUp(data).subscribe(
-      (response: any) => {
-        
-        this.responseMessage = response?.message;
-        this.snackbarService.openSnackBar(this.responseMessage, " ");
-        this.router.navigate(['/formule']);
-      },
-      (error: { error: { message: any } }) => {
-        console.log("error.error?.message " + error.error);
-        
-        if (error.error?.message.errorMessage==='EMAIL_EXIST') {
-          this.responseMessage = "Cet email existe deja";
-        } 
-        if (error.error?.message.errorMessage==='NIN_EXIST') {
-          this.responseMessage = "Cet email existe deja";
-        }
-        Swal.fire({
-          position: "center",
-          icon: 'error',
-          title: 'Inscription',
-          text: this.responseMessage,
-        });
-        this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
-      }
-    );*/
+
   }
 
   onPaste(event: ClipboardEvent) {

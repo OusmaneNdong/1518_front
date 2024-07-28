@@ -1,5 +1,4 @@
 export interface Demande{
-
     id?: number;
     urlattestation?: string,
     statut?: string,
@@ -12,5 +11,6 @@ export interface Demande{
     certificationDTO?: any,
     utilisateurDTO?: any,
     demandeurDTO?: any;
+    dateexpiration?:any;
 
 }

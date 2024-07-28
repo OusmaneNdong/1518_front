@@ -1,19 +1,19 @@
-
-
-
+    
     <table class="table table-striped">
         <thead>
-            <th>Prénom et Nom</th>
+            <th>#id</th>
+            <th>Date de la Demande</th>
             <th>Téléphone</th>
             <th>Avis Demande</th>
-            <th>Télécharger</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <tr *ngFor = "let demande of mesDemande">
-                <td>{{ demande.demandeurDTO.fullName }} </td>
+                <td>{{demande.id}}</td>
+                <td>{{ demande.datedemande }} </td>
                 <td>{{demande.demandeurDTO.telephone}}</td>
-                <td>Cette demande a été {{demande.statut}}</td>
-                <td><a routerLink="/download"><img src="/assets/icons/download.png" width="50px" height="40px" alt=""></a></td>
+                <td>Demande : <b>{{demande.statut}}</b></td>
+                <td><a (click)="load(demande.urlattestation)"><img src="/assets/icons/download.png" width="50px" height="40px" alt="download"></a> &nbsp; &nbsp;&nbsp; &nbsp;<img src="/assets/horloge-murale.png"  width="50px" height="40px" alt="compte á rebour"> </td>
             </tr>
     
         </tbody>

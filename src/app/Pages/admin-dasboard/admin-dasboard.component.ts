@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoStatistique } from '../card/card.component';
-import { DemandService } from 'src/app/Services/demand.service';
-import { DashbordService } from 'src/app/Services/dashbord.service';
+import { DemandService } from 'src/app/Servicess/demand.service';
+import { DashbordService } from 'src/app/Servicess/dashbord.service';
 import { Demande } from 'src/app/modeles/demande.modele';
 import { lastValueFrom } from 'rxjs';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
+import { Utilisateur } from 'src/app/modeles/utilisateur.modele';
+import { HelperService } from 'src/app/Servicess/helper.service';
 
 @Component({
   selector: 'app-admin-dasboard',
@@ -11,6 +14,14 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./admin-dasboard.component.css']
 })
 export class AdminDasboardComponent implements OnInit {
+
+  filtername!:string;
+  name!: string;
+  p: any = 1;
+  itemsPerPage:number= 5;
+  totalItems: any;
+  demandees: any [] = [];
+  
 
 statisques: Array<InfoStatistique> = [];
 private ntDemande = 0;
@@ -24,17 +35,35 @@ coursDemande: Demande[]=[];
 approuveDemande: Demande[]=[];
 statutDemande: Demande[]=[];
 demandes: Demande[]=[];
+utilisateur: Utilisateur  = {};
 titre: string = "La liste des demandes";
-constructor(private dashbordService:DashbordService, private demandeService: DemandService){}
+constructor(private dashbordService:DashbordService, private demandeService: DemandService,private utilisateurService: UtilisateurService,private helper:HelperService){}
 
 ngOnInit(): void {
   this.initialize();
   this.getAll();
+  this.getAllDemandes();
+
   }
+
+
+
+
+  getAllDemandes(){
+    this.demandeService.getAllDemandes().subscribe({
+      next:(response)=>{
+        this.demandees = response;
+        this.totalItems = response.length;
+
+      }
+    })
+  }
+
 
 getAll(){
   this.demandeService.getAllDemandes().subscribe((response: any)=>{
     this.demandes = response;
+
   })
 }
 
@@ -110,6 +139,21 @@ onStatut(val: string) {
   }
   
   
+}
+
+Search(){
+  if(this.name==""){
+    this.ngOnInit();
+  }else{
+    this.demandes=this.demandes.filter(r=>{
+      return (
+        r.statut?.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()) ||
+        r.demandeurDTO?.prenom.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()) ||
+        r.demandeurDTO?.nom.toLocaleLowerCase().includes(this.name.toLocaleLowerCase()) ||
+        r.demandeurDTO?.telephone.toLocaleLowerCase().includes(this.name.toLocaleLowerCase())
+      );
+    })
+  }
 }
 
 }

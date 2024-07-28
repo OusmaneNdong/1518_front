@@ -1,96 +1,99 @@
+<app-head></app-head>
+<div class="tac">
+    <div class="container">
+        <header>Formulaire d'inscription</header>
+        <form [formGroup]="signupForm">
+            <div class="">
+                <div class="details personal">
+                    <span class="title"> Informations Personnelles</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>CNI<span class="required">*</span></label>
+                            <input type="text" name="nin" formControlName="nin" placeholder="Saisir votre Numéro CNI" required>
+                            <div *ngIf="signupForm.controls.nin.touched && signupForm.controls.nin.invalid">
+                              <span *ngIf="signupForm.controls.nin.errors.required">Renseigner votre numéro d'identité!</span>
+                              <span *ngIf="signupForm.controls.nin.errors.pattern">au moins 13 chiffres et 14 au maximum</span>
+                            </div>
+                           
+                          
+                        </div>
+                        <div class="input-field">
+                          <label>Prénom<span class="required">*</span></label>
+                            <input type="text" name="prenom" formControlName="prenom"  placeholder="Sairir votre Prénom" required>
+                            <div *ngIf="signupForm.controls.prenom.touched && signupForm.controls.prenom.invalid">
+                              <span *ngIf="signupForm.controls.prenom.errors.required">Renseigner votre prénom!</span>
+                            </div>
+                          </div>
 
-  <app-head></app-head>
-<div class="global">
-  <ngx-spinner bdColor="rgba(9,2,1,0.8)" size="medium" color="#e1e6fa" type="square-jelly-box" [fullScreen]="true">
-    <p style="color: white"> En cours... </p>
-  </ngx-spinner>
-  <div class="container" id="container">
-    <div class="form-container sign-up-container">
-      <form [formGroup]="signupForm">
-        <h3>Informations Compte</h3>
-        <div style="width: 100%;">
-          <input type="email" name="email" placeholder="example@gmail.com" class="form_input" formControlName="email" (paste)="onPaste($event)" />
-          <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid">
-            <span *ngIf="signupForm.controls.email.errors.required">Veuillez renseigner votre email!</span>
-            <span *ngIf="signupForm.controls.email.errors.email">Format email incorrect</span>
-          </div>
-        </div>
 
-        <input type="email" name="confirmemail" formControlName="confirmemail" class="form_input" placeholder="Confirmation Email" (paste)="onPaste($event)" required />
-        <div *ngIf="signupForm.controls.confirmemail.touched && signupForm.controls.confirmemail.invalid">
-          <span *ngIf="signupForm.controls.confirmemail.errors.required">Répétez votre email!</span>
-          <span *ngIf="signupForm.controls.confirmemail.errors.email">Format email incorrect</span>
-          <span *ngIf="signupForm.errors?.matching && signupForm.controls.confirmemail.touched">Vos emails ne sont pas identiques</span>
-        </div>
+                        <div class="input-field">
+                          <label>Nom<span class="required">*</span></label>
+                            <input type="text" name="nom" formControlName="nom" placeholder="Saisir votre Nom" required>
+                            <div *ngIf="signupForm.controls.nom.touched && signupForm.controls.nom.invalid">
+                              <span *ngIf="signupForm.controls.nom.errors.required">Renseigner votre nom!</span>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="details ID">
+                    <span class="title"> Informations Compte</span>
+                    <!-- <img src="/assets/icons/la-fleche.png" width="15px" height="20px" alt=""> -->
+                    <div class="fields">
 
-        <input type="password" name="password" formControlName="password" class="form_input" placeholder="Mot de Passe" />
-        <div *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
-          <span *ngIf="signupForm.controls.password.errors.required">Veuillez saisir votre mot de passe!</span>
-          <span *ngIf="signupForm.controls.password.errors.minlength">Minimum 6 caractères</span>
-        </div>
+                        <div class="input-field-2">
+                          <label>Email<span class="required">*</span></label>
+                          <input type="email" name="email"  formControlName="email" placeholder="Sairir votre email" (paste)="onPaste($event)" required>
+                          <div *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid">
+                            <span *ngIf="signupForm.controls.email.errors.required">Veuillez renseigner votre email!</span>
+                            <span *ngIf="signupForm.controls.email.errors.email">Format email incorrect</span>
+                          </div>
+                        </div>
 
-        <input type="password" name="confirmpassword" class="form_input" formControlName="confirmpassword" placeholder="Répéter Mot de Passe" required/>
-        <div *ngIf="signupForm.controls.confirmpassword.touched && signupForm.controls.confirmpassword.invalid">
-          <span *ngIf="signupForm.controls.confirmpassword.errors.required">Veuillez répéter votre mot de passe!</span>
-          <span *ngIf="signupForm.errors?.matching && signupForm.controls.confirmpassword.touched">Vos mots de passe ne sont pas identiques</span>
-        </div>
 
-        <button class="btn btn-success" (click)="handleSubmit(); openSpinner();" [disabled]="signupForm.invalid">INCRIRE</button>
-      </form>
-    </div>
-    <div class="form-container sign-in-container">
-      <form [formGroup]="signupForm">
-        <h3>Informations Etat Civil</h3>
-        <div style="display: flex;">
-          <div>
-            <!-- <select id="type" name="type"  [(ngModel)]="typenin" name="typenin">
-              <option value="cat">---typePieces--</option>
-              <option value="nin">CNI</option>
-              <option value="passeport">PassePort</option>
-            </select> -->
-            <select id="type" name="type" (change)="onTypeChange($event)">
-              <option value="cat">---typePieces--</option>
-              <option value="nin">CNI</option>
-              <option value="passeport">PassePort</option>
-            </select>
-          </div>
-          <div>
-            <input type="text" name="nin" placeholder="Numéro PassePort ou CNI" class="form_input" formControlName="nin" required />
-            <div *ngIf="signupForm.controls.nin.touched && signupForm.controls.nin.invalid">
-              <span *ngIf="signupForm.controls.nin.errors.required">Renseigner votre CNI ou passeport!</span>
-              <span *ngIf="signupForm.controls.nin.errors.maxlength">Max length is 14 characters</span>
-            </div>
-          </div>
-        </div>
+                        <div class="input-field-2">
+                          <label>Confirme votre Email<span class="required">*</span></label>
+                          <input type="email"  formControlName="confirmemail" name="confirmemail" placeholder="Confirmez votre confirmemail" (paste)="onPaste($event)" required>
+                          <div *ngIf="signupForm.controls.confirmemail.touched && signupForm.controls.confirmemail.invalid">
+                            <span *ngIf="signupForm.controls.confirmemail.errors.required">Répétez votre email!</span>
+                            <span *ngIf="signupForm.controls.confirmemail.errors.email">Format email incorrect</span>
+                            <span *ngIf="signupForm.errors?.matching && signupForm.controls.confirmemail.touched">Vos emails ne sont pas identiques</span>
+                          </div>
+                        </div>
 
-        <input class="inp" type="text" name="prenom" placeholder="Prénom" class="form_input" formControlName="prenom" required />
-        <div *ngIf="signupForm.controls.prenom.touched && signupForm.controls.prenom.invalid">
-          <span *ngIf="signupForm.controls.prenom.errors.required">Renseigner votre prénom!</span>
-        </div>
 
-        <input type="text" name="nom" placeholder="Nom" class="form_input" formControlName="nom" required />
-        <div *ngIf="signupForm.controls.nom.touched && signupForm.controls.nom.invalid">
-          <span *ngIf="signupForm.controls.nom.errors.required">Renseigner votre nom!</span>
-        </div>
+                        <div class="input-field-2">
+                          <label>Mot de Passe<span class="required">*</span></label>
+                          <input  type="password" formControlName="password" name="password" placeholder="Sairir votre mot de passe" required/>
+                          <div *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
+                            <span *ngIf="signupForm.controls.password.errors.required">Veuillez saisir votre mot de passe!</span>
+                            <span *ngIf="signupForm.controls.password.errors.minlength">Minimum 6 caractères</span>
+                          </div>
+                        </div>
 
-   
-      </form>
-    </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1>Demande</h1>
-          <p>Si vous avez dèja un Compte veuillez vous connecter.</p>
-          <button class="ghost" id="signIn">Retour</button>
-        </div>
-        <div class="overlay-panel overlay-right">
-          <h1>Bienvenue</h1>
-          <p>To create an account, please fill out your personal information</p>
-          <!-- <button class="ghost" id="signUp">Sign Up</button> -->
-          <button class="btn btn-success ghost" id="signUp" [disabled]="signupForm.controls.nin.invalid || signupForm.controls.prenom.invalid || signupForm.controls.nom.invalid">ETAPE SUIVANTE</button>
-        </div>
-      </div>
+                        <div class="input-field-2">
+                          <label>Confirme votre mot de passe<span class="required">*</span></label>
+                          <input  type="password" formControlName="confirmpassword" name="confirmpassword" placeholder="confirme votre mot de passe" required/>
+                          <div *ngIf="signupForm.controls.confirmpassword.touched && signupForm.controls.confirmpassword.invalid">
+                            <span *ngIf="signupForm.controls.password.errors.required">Veuillez répéter votre mot de passe!</span>
+                            <span *ngIf="signupForm.errors?.matching && signupForm.controls.confirmpassword.touched">Vos mots de passe ne sont pas identiques</span>
+                          </div>
+                      </div>
+                    </div>
+                      <div class="button-a">
+                        <button class="nextBt" style="background-color: red;" routerLink="/formule" >
+                          <span class="btnText a1">Annuler</span>
+                          <i class="uil uil-navigator"></i>
+                      </button>
+                      <button class="nextBtn" type="submit" (click)="handleSubmit(); openSpinner();" [disabled]="signupForm.invalid">
+                        <span  class="btnText c1">Complétez</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                      </div>
+                    </div>
+                    
+                </div> 
+        </form>
+      
     </div>
   </div>
-</div>
-<!-- <app-footer></app-footer> -->
+  <app-footer></app-footer>

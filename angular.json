@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
             "@angular/material/prebuilt-themes/indigo-pink.css",
             "node_modules/jvectormap-next/jquery-jvectormap.css",
              "src/styles.css",
@@ -32,18 +33,17 @@
              "node_modules/admin-lte/dist/css/Adminlte.css",
              "node_modules/font-awesome/css/font-awesome.css",
              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
-             "node_modules/ngx-spinner/animations/timer.css",
-             "node_modules/bootstrap/dist/css/bootstrap.min.css"
+             "node_modules/ngx-spinner/animations/timer.css"
 
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "/node_modules/admin-lte/dist/js/adminlte.js",
               "node_modules/fastclick/lib/fastclick.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/jquery/dist/jquery.slim.min.js",
-             "node_modules/bootstrap/dist/js/bootstrap.min.js",
              "src/assets/squelettes/js/nav-menu.js",
              "src/assets/squelettes/js/popper.min.js",
              "src/assets/squelettes/js/owl.carousel.js",
@@ -67,6 +67,7 @@
              "src/assets/squelettes/js/main.js",
              "src/assets/squelettes/quform/js/plugins.js",
              "src/assets/squelettes/quform/js/scripts.js"
+          
 
 
 

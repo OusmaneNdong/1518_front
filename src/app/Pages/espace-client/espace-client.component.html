@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-head></app-head>
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Operation en cours... </p></ngx-spinner>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +8,36 @@
 	<title>Document</title>
 </head>
 <body>
+	<div class="container">
+		<button type="button" class="btn b2 btn-outline-info " ><a (click)="onMakeDemande() ; openSpinner()">Effectuer Une Demande</a></button>
+	  <h3>Listes de mes demandes</h3>
+		<table class="table table-striped">
+			<thead>
+				<th>Date Demande</th>
+				<th>Téléphone</th>
+				<th>Avis Demande</th>
+				<th [hidden]="demande.statut!=='approuvee'">Action</th>
+				<th [hidden]="demande.statut !== 'approuvee'">Date d'Expiration</th>
+			</thead>
+			<tbody>
+				<tr *ngFor="let d of demandes">
+					<td >{{d.datedemande}} </td>
+					<td>{{d.demandeurDTO.telephone}}</td>
+					<td><b>{{d.statut}}</b></td>
+					<td><a [hidden]="d.statut !== 'approuvee'" (click)="load(d.urlattestation)" ><img src="/assets/icons/download.png" width="40px" height="30px" alt="download" style="cursor: pointer;"></a></td>
+					<td [hidden]="d.statut !== 'approuvee' || demandeur.completed" style="border: 0px solid black;">{{d.dateexpiration}}</td>
+				</tr>
+		
+			</tbody>
+		</table>
+	</div>
 
-	<button type="button" class="btn b1 btn-outline-success btn-lg"><a routerLink="/mesdemandes/{{demandeurId}}">Mes Demandes</a></button>
-	<button type="button" class="btn b2 btn-outline-info btn-lg"><a (click)="onMakeDemande() ; openSpinner()">Effectuer Une Demande</a></button>
-	<button type="button" class="btn b1 btn-outline-success btn-lg"><a [routerLink]="['/update-demandeur', demandeur.id]">Modifier</a></button>
+	
+
 
 <div>
 </div>
 
-</body>Í
+</body>
 </html>
 <!-- <app-footer></app-footer> -->

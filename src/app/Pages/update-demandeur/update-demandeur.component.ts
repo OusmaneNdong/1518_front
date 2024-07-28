@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { data } from 'jquery';
-import { DemandeurService } from 'src/app/Services/demandeur.service';
+import { DemandeurService } from 'src/app/Servicess/demandeur.service';
 import { Demandeur } from 'src/app/modeles/demandeur.modele';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-demandeur',
@@ -13,7 +14,7 @@ export class UpdateDemandeurComponent implements OnInit {
 
 demandeur : Demandeur = {}
 
-    constructor(private demandeurService:DemandeurService, private route: ActivatedRoute, private router: Router){}
+    constructor(private demandeurService:DemandeurService, private route: ActivatedRoute, private router: Router,private spinner: NgxSpinnerService,){}
 
   ngOnInit(): void {
 
@@ -21,35 +22,40 @@ demandeur : Demandeur = {}
     this.demandeurService.getDemandeurById(id).subscribe({
       next:(data)=>{
         this.demandeur=data;
-        // console.log("getDemandeur" + this.demandeur.fonction);
       }
     })
-    
-      
-      
-      
-
   }
 
+
+  openSpinner(){
+    this.spinner.show();
+    setTimeout(()=>{
+      this.spinner.hide();
+    },1000)
+  }
 
 
   update(data:any){
     this.demandeurService.update(data).subscribe({
       next:(data)=>{
-        // this.demandeur = data;
         console.log("data demandeur " + data);
-        
       }
     })
   }
   onUpdate(){
-    // this.demandeur.utilisateurDTO.id = localStorage.getItem('userId');
-    // console.log("this demandeur" + this.demandeur.id);
     this.demandeurService.update(this.demandeur).subscribe({
-
       next:(data)=>{
-        // this.demandeur = data;
         console.log("data demandeur " + data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "la modifaction de vos informations a été éffectué avec success",
+          showConfirmButton: true,
+          timer: 2000
+        }).then(()=>{
+          this.router.navigate(['/formule']);
+          // this.router.navigate(['/espaceClient',data])
+        })
         
       }
     })

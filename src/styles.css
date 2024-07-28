@@ -1,18 +1,29 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html, body { 
-    /* background-image: url('/assets/vues/p1.jpeg'); */
-    background-size: cover;
+        /* background-image: url("src/assets/act/l3.jpg"); */
+        background-size: 100% auto;
+        /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    background-color: #f2f2f2;
 }
 
-/* .wrapper .content-wrapper {
-    background-color: red;
-    p{
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 30px;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.tac{
+    min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
     }
-} */
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
-
-
+    .container{
+        padding-top: 40px;
+    }
+    

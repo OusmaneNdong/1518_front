@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { SnackbarService } from '../../Services/snackbar.service';
-import { UtilisateurService } from '../../Services/utilisateur.service';
-import { GlobalConstants } from '../shared/global-constants';
+import { UtilisateurService } from '../../Servicess/utilisateur.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import Swal from 'sweetalert2';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { data, error } from 'jquery';
-import { HelperService } from 'src/app/Services/helper.service';
+import { HelperService } from 'src/app/Servicess/helper.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,15 +13,11 @@ import { HelperService } from 'src/app/Services/helper.service';
 })
 export class ForgotPasswordComponent implements OnInit{
 
-  //private helper = new JwtHelperService();
-  //email!:string;
-  //nin!:string;
-
   openSpinner(){
     this.spinner.show();
     setTimeout(()=>{
       this.spinner.hide();
-    },4000)
+    },1000)
   }
 
   setPasswordForm:any = FormGroup;
@@ -37,7 +28,6 @@ export class ForgotPasswordComponent implements OnInit{
 
   constructor(private formBulider:FormBuilder, 
     private utilisateurService:UtilisateurService , 
-    private snackbarService:SnackbarService,
     private router: Router,
     private spinner: NgxSpinnerService,
     private helperService: HelperService
@@ -45,12 +35,6 @@ export class ForgotPasswordComponent implements OnInit{
 
 
   ngOnInit(): void {
-
-//console.log("getEmail()", localStorage.getItem('mail') as string);
-//this.email = this.helperService.email;
-
-
-    //this.email = localStorage.getItem('email')!;
     this.setPasswordForm = this.formBulider.group({
 //      email:[this.email, Validators.required],
       oldPassword:[null , Validators.required],
@@ -79,9 +63,9 @@ export class ForgotPasswordComponent implements OnInit{
           icon: "success",
           title: "mot de passe modifiée! ",
           showConfirmButton: false,
-          timer: 5000
+          timer: 2000
         }).then(() => {
-          this.router.navigate(['/espaceClient']);      });
+          this.router.navigate(['/connecter']);      });
         
       },
       error:(err:any)=>{
@@ -92,7 +76,7 @@ export class ForgotPasswordComponent implements OnInit{
             icon: "error",
             title: "Les mots de passe ne correspondent pas ",
             showConfirmButton: false,
-            timer: 5000
+            timer: 2000
           }) 
         }
         if (err.error.errorMessage==='NOT_MATCH_PASSWORD_OLD') {
@@ -101,63 +85,14 @@ export class ForgotPasswordComponent implements OnInit{
             icon: "error",
             title: "L'ancien mot de passe saisit n'est pas correct",
             showConfirmButton: false,
-            timer: 5000
+            timer: 2000
           }) 
         }
-        
-        
-        // if(err.error?.message){
-        //   this.responseMessage = err.error?.message;
-        //   Swal.fire({
-        //     icon: "error",
-        //     text: "Erreur de!",
-        //     footer: '<a routerLing="/login">Échec modification !</a>'
-        //   });
-        // }else{
-        //   this.responseMessage = GlobalConstants.genericError;
-        // }
-        // this.snackbarService.openSnackBar(this.responseMessage , GlobalConstants.error);
       }
     })
-    // alert(data.email+" "+data.confirm+" "+data.oldPassword);
-    /*this.utilisateurService.changePassword(data).subscribe((response:any)=>{
-      this.responseMessage = response?.message;
-      this.snackbarService.openSnackBar(this.responseMessage,"");
-      alert("ok");
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "mot de passe modifiée! ",
-        showConfirmButton: false,
-        timer: 5000
-      }).then(() => {
-        this.router.navigate(['/login']);      });
-      
-    }
-    ), (error: { error: { message: any; }; })=>{
-       if(error.error?.message){
-        this.responseMessage = error.error?.message;
-        Swal.fire({
-          icon: "error",
-          text: "Erreur de!",
-          footer: '<a routerLing="/login">Échec modification !</a>'
-        });
-      }else{
-        this.responseMessage = GlobalConstants.genericError;
-      }
-      this.snackbarService.openSnackBar(this.responseMessage , GlobalConstants.error);
-    }*/
+
     this.registerSucess=true; 
     this.isButtonVisible = false;  
-    
-    //  this.utilisateurService.changerpassword(data).subscribe({
-    //   next:(response:any)=>{
-    //     alert("ok");
-    //   },
-    //   error: (err: any)=>{
-    //     alert("ko");
-    //   }
-    // })
   }
 
   
@@ -172,5 +107,19 @@ export class ForgotPasswordComponent implements OnInit{
      }
      return true;
   }
+  refresh(){
+    window.location.reload();
+  }
+  
+
+  deconnect(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('profile');
+    localStorage.removeItem('nin');
+    this.router.navigate(['/connecter']);
+    this.refresh()
+  }
+  
 
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DashbordService } from 'src/app/Services/dashbord.service';
+import { DashbordService } from 'src/app/Servicess/dashbord.service';
 import { Demande } from 'src/app/modeles/demande.modele';
 export interface InfoStatistique{
   title?: string;

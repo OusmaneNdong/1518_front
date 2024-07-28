@@ -1,7 +1,7 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DemandService } from 'src/app/Services/demand.service';
+import { DemandService } from 'src/app/Servicess/demand.service';
 import { saveAs } from 'file-saver';
 import { Demande } from 'src/app/modeles/demande.modele';
 

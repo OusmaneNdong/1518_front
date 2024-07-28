@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UtilisateurService } from 'src/app/Services/utilisateur.service';
+import { DemandeurService } from 'src/app/Servicess/demandeur.service';
+import { UtilisateurService } from 'src/app/Servicess/utilisateur.service';
+import { Demandeur } from 'src/app/modeles/demandeur.modele';
 
 @Component({
   selector: 'app-head',
@@ -9,17 +11,23 @@ import { UtilisateurService } from 'src/app/Services/utilisateur.service';
   
 })
 export class HeadComponent implements OnInit {
+
+  demandeur: Demandeur = {};
   
-  constructor(private auth: UtilisateurService,  private router:Router){}
+  constructor(private auth: UtilisateurService,  private router:Router, private demandeurService: DemandeurService){}
 
   isLogin =false;
+  nin!: string;
   
   ngOnInit(): void {
+    this.nin= localStorage.getItem("nin")!;
     this.isLogin = this.auth.isLoaging
     if(localStorage.getItem("token")){
        this.isLogin = true;
+      
     }
-      console.log(this.isLogin);
+      console.log("this.isLogin" + this.isLogin);
+      this.getDemandeurByNin(this.nin)
     
   }
 
@@ -32,8 +40,17 @@ deconnect(){
   localStorage.removeItem('userId');
   localStorage.removeItem('profile');
   localStorage.removeItem('nin');
-  this.router.navigate(['/formule']);
+  this.router.navigate(['/connecter']);
   this.refresh()
 }
+
+getDemandeurByNin(nin:string){
+  this.demandeurService.getDemandeurByNin(nin).subscribe({
+    next:(data)=>{
+      this.demandeur = data;
+    }
+  })
+}
+
 
 }
